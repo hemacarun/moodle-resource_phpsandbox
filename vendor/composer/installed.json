@@ -1,0 +1,144 @@
+[
+    {
+        "name": "nikic/php-parser",
+        "version": "0.9.x-dev",
+        "version_normalized": "0.9.9999999.9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nikic/PHP-Parser.git",
+            "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ef70767475434bdb3615b43c327e2cae17ef12eb",
+            "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb",
+            "shasum": ""
+        },
+        "require": {
+            "ext-tokenizer": "*",
+            "php": ">=5.2"
+        },
+        "time": "2014-07-23 18:24:17",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PHPParser": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Nikita Popov"
+            }
+        ],
+        "description": "A PHP parser written in PHP",
+        "keywords": [
+            "parser",
+            "php"
+        ]
+    },
+    {
+        "name": "jeremeamia/FunctionParser",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jeremeamia/FunctionParser.git",
+            "reference": "9e1ea101f2680dcce65c338bba76dac380d921c6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jeremeamia/FunctionParser/zipball/9e1ea101f2680dcce65c338bba76dac380d921c6",
+            "reference": "9e1ea101f2680dcce65c338bba76dac380d921c6",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2"
+        },
+        "time": "2014-01-14 23:32:26",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "FunctionParser": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jeremy Lindblom"
+            }
+        ],
+        "description": "Function parser for PHP functions, methods, and closures",
+        "homepage": "https://github.com/jeremeamia/FunctionParser",
+        "keywords": [
+            "closure",
+            "function",
+            "parser",
+            "tokenizer"
+        ]
+    },
+    {
+        "name": "fieryprophet/php-sandbox",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fieryprophet/php-sandbox.git",
+            "reference": "b4e28effec0958e27af13304a022b101bd1f1731"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fieryprophet/php-sandbox/zipball/b4e28effec0958e27af13304a022b101bd1f1731",
+            "reference": "b4e28effec0958e27af13304a022b101bd1f1731",
+            "shasum": ""
+        },
+        "require": {
+            "jeremeamia/functionparser": "dev-master",
+            "nikic/php-parser": "0.9.*@dev",
+            "php": ">=5.3.2"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "v2.3.0",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2014-09-11 19:55:16",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PHPSandbox\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Elijah Horton"
+            }
+        ],
+        "description": "A PHP library that can be used to run PHP code in a sandboxed environment",
+        "homepage": "http://www.fieryprophet.com/phpsandbox",
+        "keywords": [
+            "blacklist",
+            "parser",
+            "php",
+            "sandbox",
+            "whitelist"
+        ]
+    }
+]

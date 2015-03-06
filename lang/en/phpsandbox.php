@@ -1,0 +1,20 @@
+<?php
+$string['pluginname'] = 'PHP Sandbox';
+$string['userpreferences'] = 'User preferences';
+$string['modulename'] = 'PHP Sandbox';
+$string['pluginadministration']='PHP Sandbox';
+$string['modulenameplural']='PHP Sandbox';
+$string['ps_download']='Download';
+$string['ps_name']='Name of the saved code';
+$string['ps_delete']='Delete';
+$string['ps_view_headings']='List of saved code';
+$string['ps_view']='View';
+$string['ps_runtime']='Runtime Environment';
+$string['ps_action']='Actions';
+$string['psname']='Name';
+$string['psdescription']='Description';
+$string['deleteps']='Delete record';
+$string['deletepsrecords']='Do you really want to delete this record.';
+$string['emptyps_msg']='No record saved yet, please click <b>Runtime Environment</b> tab.';
+$string['deletepsyes']='Record deleted successfully';  
+$string['deletepsno']='Having problem while deletion,Please try again'; 
