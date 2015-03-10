@@ -1,6 +1,6 @@
 PHP sandbox resource
 ------------------------------------------------------------------------------------------------------
- It provide runtime environment to run the php script(phpsandbox).
+ It provide the runtime environment to run the php script(phpsandbox).
  
  php sandbox-  even its supports oops concepts such as classes and functions to run.
  we can also save and download the code
