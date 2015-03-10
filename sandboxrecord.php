@@ -3,7 +3,8 @@
 global $CFG, $DB, $USER;
 @require_once($CFG->dirroot . '../../config.php');
 error_reporting(0);
-$selectedrecordid = $_POST['selectedid'];
+
+$selectedrecordid = optional_param('selectedid',null, PARAM_INT);
 if ($selectedrecordid) {
     // fetching record
     $selecteddata = $DB->get_record('phpsandbox_records', array('id' => $selectedrecordid));
@@ -11,23 +12,8 @@ if ($selectedrecordid) {
     echo $selecteddata->codecontent;
 } else {
     // inserting record
-    if (isset($_POST['save']) || isset($_POST['download'])) {
-        if (isset($_POST['download'])) {
-            $data = json_decode($_POST['download'], true);
-            if (!is_array($data)) {
-                header('Content-type: text/html');
-                die('<html><body><script>alert("Template could not be saved!");</script></body></html>');
-            }
-            $code = $data['code'];
-            $setup_code = isset($data['setup_code']) ? $data['setup_code'] : null;
-            $prepend_code = isset($data['prepend_code']) ? $data['prepend_code'] : null;
-            $append_code = isset($data['append_code']) ? $data['append_code'] : null;
-            $options = isset($data['options']) ? $data['options'] : array();
-            $whitelist = isset($data['whitelist']) ? $data['whitelist'] : null;
-            $blacklist = isset($data['blacklist']) ? $data['blacklist'] : null;
-            $definitions = isset($data['definitions']) ? $data['definitions'] : null;
-            $filename = $template = stripslashes($data['save']);
-        } else {
+    if (isset($_POST['save']) ) {
+
             $code = $_POST['code'];
             $setup_code = isset($_POST['setup_code']) ? $_POST['setup_code'] : null;
             $prepend_code = isset($_POST['prepend_code']) ? $_POST['prepend_code'] : null;
@@ -35,10 +21,8 @@ if ($selectedrecordid) {
             $options = isset($_POST['options']) ? $_POST['options'] : array();
             $whitelist = isset($_POST['whitelist']) ? $_POST['whitelist'] : null;
             $blacklist = isset($_POST['blacklist']) ? $_POST['blacklist'] : null;
-            $definitions = isset($_POST['definitions']) ? $_POST['definitions'] : null;
-            $template = stripslashes(isset($_POST['save']) ? $_POST['save'] : $_POST['download']);
-            $filename = isset($_POST['download']) ? $template : trim(preg_replace('/[^a-zA-Z0-9_ ]/', '_', $template), '_');
-        }
+            $definitions = isset($_POST['definitions']) ? $_POST['definitions'] : null;        
+
 
         $data = array(
             'code' => $code,
