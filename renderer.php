@@ -54,7 +54,7 @@ class mod_phpsandbox_renderer extends plugin_renderer_base {
         $PAGE->requires->js('/mod/phpsandbox/js/ace.js');
         ?>
         <!--<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js" type="text/javascript" charset="utf-8"></script>-->
-        <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8">
+        <!--<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8">-->
         <?php
         $PAGE->requires->js('/mod/phpsandbox/js/psandbox.js');
     }
