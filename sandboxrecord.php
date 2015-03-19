@@ -13,6 +13,7 @@ $whitelist = optional_param('whitelist', null, PARAM_TEXT);
 $blacklist = optional_param('blacklist', null, PARAM_TEXT);
 $definitions = optional_param('definitions', null, PARAM_TEXT);
 $selectedrecordid = optional_param('selectedid',null, PARAM_INT);
+$save = optional_param('save', null, PARAM_TEXT);
 
 
 function converting_objecttoarray($jsondata) {
@@ -33,7 +34,7 @@ if ($selectedrecordid) {
     echo $selecteddata->codecontent;
 } else {
     // inserting record
-    if (isset($_POST['save']) ) {
+    if (isset($save) ) {
 
     $code = json_decode($code);
     $setup_code = json_decode($setup_code);
