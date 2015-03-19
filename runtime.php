@@ -33,15 +33,13 @@ $recordid = optional_param('recordid', -1, PARAM_INT);
 // phpsandbox variable
 
 $code = optional_param('code', null, PARAM_RAW);
-//$save = optional_param('save', null, PARAM_RAW);
-//$download= optional_param('download', null, PARAM_RAW);
-$setup_code = optional_param('setup_code', null, PARAM_RAW);
-$prepend_code = optional_param('prepend_code', null, PARAM_RAW);
-$append_code = optional_param('append_code', null, PARAM_RAW);
-$options = optional_param('options', null, PARAM_RAW);
-$whitelist = optional_param('whitelist', null, PARAM_RAW);
-$blacklist = optional_param('blacklist', null, PARAM_RAW);
-$definitions = optional_param('definitions', null, PARAM_RAW);
+$setup_code = optional_param('setup_code', null, PARAM_TEXT);
+$prepend_code = optional_param('prepend_code', null, PARAM_TEXT);
+$append_code = optional_param('append_code', null, PARAM_TEXT);
+$options = optional_param('options', null, PARAM_TEXT);
+$whitelist = optional_param('whitelist', null, PARAM_TEXT);
+$blacklist = optional_param('blacklist', null, PARAM_TEXT);
+$definitions = optional_param('definitions', null, PARAM_TEXT);
 
 
 if (!$cm = get_coursemodule_from_id('phpsandbox', $id)) {
@@ -65,17 +63,13 @@ $completion->set_module_viewed($cm);
 
 // Print header.
 $PAGE->set_title(get_string('ps_runtime', 'phpsandbox'));
-//$PAGE->requires->css('/mod/phpsandbox/css/jquery-ui.css');
  $PAGE->requires->jquery_plugin('ui-css');
     $PAGE->requires->jquery();
           $PAGE->requires->jquery_plugin('ui');
 
 require_once('vendor/autoload.php');
 
-if (isset($_REQUEST['load'])) {
-    header('Content-type: text/html');
-    die('<html><body><form id="load_form" action="./runtime.php?id=' . $id . '/" method="POST" enctype="multipart/form-data"><input type="file" name="load" onchange="javascript:document.getElementById(\'load_form\').submit();"/></form></body></html>');
-}
+
 if (isset($_FILES['load'])) {
     if ($_FILES['load']['error'] == 0 && ($data = file_get_contents($_FILES['load']['tmp_name']))) {
 
@@ -96,7 +90,7 @@ function converting_objecttoarray($jsondata) {
     return $jsondata;
 }
 
-if (isset($_POST['code'])) {
+if (isset($code)) {
 
     $code = json_decode($code);
     $setup_code = json_decode($setup_code);
@@ -150,18 +144,8 @@ if (isset($_POST['code'])) {
     }
 }
 
-if (isset($_GET['template'])) {
-    $template = stripslashes($_GET['template']);
-    if (file_exists($template)) {
-        header('Content-type: text/html');
-        readfile($template);
-    }
-    exit;
-}
 
-if (isset($_REQUEST['download'])) {
-    exit;
-}
+
 $data = json_decode(file_get_contents("templates/001 - Hello World.json"), true);
 $output = $PAGE->get_renderer('mod_phpsandbox');
 
