@@ -15,7 +15,6 @@ $definitions = optional_param('definitions', null, PARAM_TEXT);
 $selectedrecordid = optional_param('selectedid',null, PARAM_INT);
 $save = optional_param('save', null, PARAM_TEXT);
 
-
 function converting_objecttoarray($jsondata) {
 
     $jsondata = json_decode($jsondata);
@@ -25,6 +24,7 @@ function converting_objecttoarray($jsondata) {
     // }    
     return $jsondata;
 }
+
 
 
 if ($selectedrecordid) {
@@ -61,7 +61,9 @@ if ($selectedrecordid) {
     
     $template = optional_param('template', null, PARAM_TEXT);
     $instanceid = optional_param('instanceid',null, PARAM_INT);
-    $name = optional_param('title', null, PARAM_TEXT);
+    $name = optional_param('title', null, PARAM_TEXT); 
+
+
 
 // saving code to as a phpsandbox record
     $temp = new stdClass();
