@@ -4,7 +4,28 @@ global $CFG, $DB, $USER;
 @require_once($CFG->dirroot . '../../config.php');
 error_reporting(0);
 
+$code = optional_param('code', null, PARAM_RAW);
+$setup_code = optional_param('setup_code', null, PARAM_TEXT);
+$prepend_code = optional_param('prepend_code', null, PARAM_TEXT);
+$append_code = optional_param('append_code', null, PARAM_TEXT);
+$options = optional_param('options', null, PARAM_TEXT);
+$whitelist = optional_param('whitelist', null, PARAM_TEXT);
+$blacklist = optional_param('blacklist', null, PARAM_TEXT);
+$definitions = optional_param('definitions', null, PARAM_TEXT);
 $selectedrecordid = optional_param('selectedid',null, PARAM_INT);
+
+
+function converting_objecttoarray($jsondata) {
+
+    $jsondata = json_decode($jsondata);
+    // if(is_array( $jsondata)){
+    $jsondata = json_decode(json_encode($jsondata), true);
+    $jsondata = array_filter($jsondata);
+    // }    
+    return $jsondata;
+}
+
+
 if ($selectedrecordid) {
     // fetching record
     $selecteddata = $DB->get_record('phpsandbox_records', array('id' => $selectedrecordid));
@@ -14,14 +35,14 @@ if ($selectedrecordid) {
     // inserting record
     if (isset($_POST['save']) ) {
 
-            $code = $_POST['code'];
-            $setup_code = isset($_POST['setup_code']) ? $_POST['setup_code'] : null;
-            $prepend_code = isset($_POST['prepend_code']) ? $_POST['prepend_code'] : null;
-            $append_code = isset($_POST['append_code']) ? $_POST['append_code'] : null;
-            $options = isset($_POST['options']) ? $_POST['options'] : array();
-            $whitelist = isset($_POST['whitelist']) ? $_POST['whitelist'] : null;
-            $blacklist = isset($_POST['blacklist']) ? $_POST['blacklist'] : null;
-            $definitions = isset($_POST['definitions']) ? $_POST['definitions'] : null;        
+    $code = json_decode($code);
+    $setup_code = json_decode($setup_code);
+    $prepend_code = json_decode($prepend_code);
+    $append_code = json_decode($append_code);
+    $options = converting_objecttoarray($options);
+    $whitelist = converting_objecttoarray($whitelist);
+    $blacklist = converting_objecttoarray($blacklist);
+    $definitions = converting_objecttoarray($definitions);     
 
 
         $data = array(
@@ -35,12 +56,11 @@ if ($selectedrecordid) {
             'definitions' => $definitions
         );
     }
-
-    $instanceid = $_POST['instanceid'];
-
-    $template = $_POST['template'];
-    $name = $_POST['title'];
-
+    
+    
+    $template = optional_param('template', null, PARAM_TEXT);
+    $instanceid = optional_param('instanceid',null, PARAM_INT);
+    $name = optional_param('title', null, PARAM_TEXT);
 
 // saving code to as a phpsandbox record
     $temp = new stdClass();
