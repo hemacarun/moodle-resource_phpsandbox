@@ -335,7 +335,7 @@
                 else if (!code)
                     alert("Can't save a file without a code!, please enter a code");
                 else {
-                    $.post("sandboxrecord.php", {"instanceid":cminstance, "title": title, "template": template, "code": code, "setup_code": setup_code, "prepend_code": prepend_code, "append_code": append_code, "options": options, "whitelist": whitelist, "blacklist": blacklist, "definitions": definitions, "save": name})
+                    $.post("sandboxrecord.php", {"instanceid":cminstance, "title": title, "template": template, "code": JSON.stringify(code), "setup_code": JSON.stringify(setup_code), "prepend_code": JSON.stringify(prepend_code), "append_code": JSON.stringify(append_code), "options": JSON.stringify(options), "whitelist": JSON.stringify(whitelist), "blacklist": JSON.stringify(blacklist), "definitions": JSON.stringify(definitions), "save": name})
                             .done(function (data) {
 
                                 alert('code saved successfully, please check in saved drop down box');
